@@ -4,7 +4,7 @@
 
 int main (int argc, char *argv[])
 {
-  g_autoptr(ShowhideApplication) app = NULL;
+  g_autoptr(App) app = NULL;
 
   app = app_new ("org.martins.ShowHide", G_APPLICATION_FLAGS_NONE);
 

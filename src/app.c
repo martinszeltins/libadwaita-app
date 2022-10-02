@@ -2,14 +2,14 @@
 #include "app.h"
 #include "window.h"
 
-struct _ShowhideApplication
+struct _App
 {
   AdwApplication parent_instance;
 };
 
-G_DEFINE_TYPE (ShowhideApplication, showhide_application, ADW_TYPE_APPLICATION)
+G_DEFINE_TYPE (App, showhide_application, ADW_TYPE_APPLICATION)
 
-ShowhideApplication * app_new (const char *application_id, GApplicationFlags flags)
+App * app_new (const char *application_id, GApplicationFlags flags)
 {
   g_return_val_if_fail (application_id != NULL, NULL);
 
@@ -32,7 +32,7 @@ static void showhide_application_activate (GApplication *app)
   gtk_window_present (window);
 }
 
-static void showhide_application_class_init (ShowhideApplicationClass *klass)
+static void showhide_application_class_init (AppClass *klass)
 {
   GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
@@ -42,7 +42,7 @@ static void showhide_application_class_init (ShowhideApplicationClass *klass)
 static void showhide_application_about_action (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   static const char *developers[] = {"Martins", NULL};
-  ShowhideApplication *self = user_data;
+  App *self = user_data;
 
   adw_show_about_window(
     gtk_application_get_active_window (GTK_APPLICATION (self)),
@@ -58,7 +58,7 @@ static void showhide_application_about_action (GSimpleAction *action, GVariant *
 
 static void showhide_application_quit_action (GSimpleAction *action, GVariant * parameter, gpointer user_data)
 {
-  ShowhideApplication *self = user_data;
+  App *self = user_data;
 
   g_assert (SHOWHIDE_IS_APPLICATION (self));
 
@@ -70,7 +70,7 @@ static const GActionEntry app_actions[] = {
   { "about", showhide_application_about_action },
 };
 
-static void showhide_application_init (ShowhideApplication *self)
+static void showhide_application_init (App *self)
 {
   g_action_map_add_action_entries (G_ACTION_MAP (self), app_actions, G_N_ELEMENTS (app_actions), self);
   gtk_application_set_accels_for_action (GTK_APPLICATION (self), "app.quit", (const char *[]) { "<primary>q", NULL });
