@@ -1,6 +1,6 @@
 #include "config.h"
 #include <glib/gi18n.h>
-#include "showhide-application.h"
+#include "app.h"
 
 int main (int argc, char *argv[])
 {

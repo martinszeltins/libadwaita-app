@@ -1,6 +1,6 @@
 #include "config.h"
-#include "showhide-application.h"
-#include "showhide-window.h"
+#include "app.h"
+#include "window.h"
 
 struct _ShowhideApplication
 {

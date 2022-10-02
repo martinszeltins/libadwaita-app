@@ -1,5 +1,5 @@
 #include "config.h"
-#include "showhide-window.h"
+#include "window.h"
 
 struct _ShowhideWindow
 {

@@ -1,7 +1,7 @@
 showhide_sources = [
   'main.c',
-  'showhide-application.c',
-  'showhide-window.c',
+  'app.c',
+  'window.c',
 ]
 
 showhide_deps = [
