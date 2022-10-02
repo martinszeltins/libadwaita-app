@@ -7,11 +7,11 @@
         <property name="default-width">600</property>
         <property name="default-height">300</property>
         
-        <!-- Headerbar -->
         <child>
             <object class="GtkBox">
                 <property name="orientation">vertical</property>
 
+                <!-- Headerbar -->
                 <child>
                     <object class="GtkHeaderBar" id="header_bar">
                         <child type="end">
@@ -22,15 +22,12 @@
                         </child>
                     </object>
                 </child>
-            
+
+                <!-- Hello World -->
                 <child>
                     <object class="GtkLabel" id="label">
                         <property name="label">Hello, World!</property>
                         <property name="vexpand">true</property>
-
-                        <style>
-                            <class name="title-1"/>
-                        </style>
                     </object>
                 </child>
             </object>
