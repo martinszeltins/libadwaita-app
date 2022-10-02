@@ -7,7 +7,7 @@ struct _App
   AdwApplication parent_instance;
 };
 
-G_DEFINE_TYPE (App, showhide_application, ADW_TYPE_APPLICATION)
+G_DEFINE_TYPE (App, app, ADW_TYPE_APPLICATION)
 
 App * app_new (const char *application_id, GApplicationFlags flags)
 {
@@ -16,7 +16,7 @@ App * app_new (const char *application_id, GApplicationFlags flags)
   return g_object_new (SHOWHIDE_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
 }
 
-static void showhide_application_activate (GApplication *app)
+static void app_activate (GApplication *app)
 {
   GtkWindow *window;
 
@@ -32,14 +32,14 @@ static void showhide_application_activate (GApplication *app)
   gtk_window_present (window);
 }
 
-static void showhide_application_class_init (AppClass *klass)
+static void app_class_init (AppClass *klass)
 {
   GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
-  app_class->activate = showhide_application_activate;
+  app_class->activate = app_activate;
 }
 
-static void showhide_application_about_action (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+static void app_about_action (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
   static const char *developers[] = {"Martins", NULL};
   App *self = user_data;
@@ -56,7 +56,7 @@ static void showhide_application_about_action (GSimpleAction *action, GVariant *
   );
 }
 
-static void showhide_application_quit_action (GSimpleAction *action, GVariant * parameter, gpointer user_data)
+static void app_quit_action (GSimpleAction *action, GVariant * parameter, gpointer user_data)
 {
   App *self = user_data;
 
@@ -66,11 +66,11 @@ static void showhide_application_quit_action (GSimpleAction *action, GVariant * 
 }
 
 static const GActionEntry app_actions[] = {
-  { "quit", showhide_application_quit_action },
-  { "about", showhide_application_about_action },
+  { "quit", app_quit_action },
+  { "about", app_about_action },
 };
 
-static void showhide_application_init (App *self)
+static void app_init (App *self)
 {
   g_action_map_add_action_entries (G_ACTION_MAP (self), app_actions, G_N_ELEMENTS (app_actions), self);
   gtk_application_set_accels_for_action (GTK_APPLICATION (self), "app.quit", (const char *[]) { "<primary>q", NULL });
