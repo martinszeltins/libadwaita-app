@@ -9,32 +9,29 @@ struct _App
 
 G_DEFINE_TYPE (App, app, ADW_TYPE_APPLICATION)
 
-App * app_new (const char *application_id, GApplicationFlags flags)
+App * app_new (const char * id, GApplicationFlags flags)
 {
-  g_return_val_if_fail (application_id != NULL, NULL);
+  g_return_val_if_fail (id != NULL, NULL);
 
-  return g_object_new (SHOWHIDE_TYPE_APPLICATION, "application-id", application_id, "flags", flags, NULL);
+  return g_object_new (SHOWHIDE_TYPE_APPLICATION, "application-id", id, "flags", flags, NULL);
 }
 
-static void app_activate (GApplication *app)
+static void app_activate (GApplication * app)
 {
-  GtkWindow *window;
-
-  g_assert (SHOWHIDE_IS_APPLICATION (app));
+  GtkWindow * window;
 
   window = gtk_application_get_active_window (GTK_APPLICATION (app));
 
-  if (window == NULL)
-  {
+  if (window == NULL) {
     window = g_object_new (SHOWHIDE_TYPE_WINDOW, "application", app, NULL);
   }
 
   gtk_window_present (window);
 }
 
-static void app_class_init (AppClass *klass)
+static void app_class_init (AppClass * class)
 {
-  GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
+  GApplicationClass * app_class = G_APPLICATION_CLASS (class);
 
   app_class->activate = app_activate;
 }
