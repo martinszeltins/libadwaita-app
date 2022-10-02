@@ -10,7 +10,7 @@ showhide_deps = [
 ]
 
 showhide_sources += gnome.compile_resources('showhide-resources',
-  'showhide.gresource.xml',
+  'gresource.xml',
   c_name: 'showhide'
 )
 
