@@ -39,10 +39,10 @@ static void app_class_init (AppClass * class)
 static void app_about_action (GSimpleAction * action, GVariant * parameter, gpointer user_data)
 {
     static const char * developers[] = { "Martins", NULL };
-    App * self = user_data;
+    App * app = user_data;
 
     adw_show_about_window(
-        gtk_application_get_active_window (GTK_APPLICATION (self)),
+        gtk_application_get_active_window (GTK_APPLICATION (app)),
         "application-name", "showhide",
         "application-icon", "org.martins.ShowHide",
         "developer-name", "Martins",
@@ -55,11 +55,9 @@ static void app_about_action (GSimpleAction * action, GVariant * parameter, gpoi
 
 static void app_quit_action (GSimpleAction * action, GVariant * parameter, gpointer user_data)
 {
-    App * self = user_data;
+    App * app = user_data;
 
-    g_assert (SHOWHIDE_IS_APPLICATION (self));
-
-    g_application_quit (G_APPLICATION (self));
+    g_application_quit (G_APPLICATION (app));
 }
 
 static const GActionEntry app_actions[] = {
@@ -67,9 +65,9 @@ static const GActionEntry app_actions[] = {
     { "about", app_about_action },
 };
 
-static void app_init (App * self)
+static void app_init (App * app)
 {
-    g_action_map_add_action_entries (G_ACTION_MAP (self), app_actions, G_N_ELEMENTS (app_actions), self);
-    gtk_application_set_accels_for_action (GTK_APPLICATION (self), "app.quit", (const char *[]) { "<primary>q", NULL });
+    g_action_map_add_action_entries (G_ACTION_MAP (app), app_actions, G_N_ELEMENTS (app_actions), app);
+    gtk_application_set_accels_for_action (GTK_APPLICATION (app), "app.quit", (const char *[]) { "<primary>q", NULL });
 }
 
