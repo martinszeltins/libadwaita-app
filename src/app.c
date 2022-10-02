@@ -11,8 +11,6 @@ G_DEFINE_TYPE (App, app, ADW_TYPE_APPLICATION)
 
 App * app_new (const char * id, GApplicationFlags flags)
 {
-    g_return_val_if_fail (id != NULL, NULL);
-
     return g_object_new (TYPE_APP, "application-id", id, "flags", flags, NULL);
 }
 
