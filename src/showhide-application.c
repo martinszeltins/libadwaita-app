@@ -43,14 +43,9 @@ static void showhide_application_about_action (GSimpleAction *action, GVariant *
 {
   static const char *developers[] = {"Martins", NULL};
   ShowhideApplication *self = user_data;
-  GtkWindow *window = NULL;
-
-  g_assert (SHOWHIDE_IS_APPLICATION (self));
-
-  window = gtk_application_get_active_window (GTK_APPLICATION (self));
 
   adw_show_about_window(
-    window,
+    gtk_application_get_active_window (GTK_APPLICATION (self)),
     "application-name", "showhide",
     "application-icon", "org.martins.ShowHide",
     "developer-name", "Martins",
