@@ -1,0 +1,6 @@
+data/org.martins.ShowHide.desktop.in
+data/org.martins.ShowHide.appdata.xml.in
+data/org.martins.ShowHide.gschema.xml
+src/main.c
+src/showhide-window.c
+src/showhide-window.ui

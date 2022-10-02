@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="showhide">
+	<schema id="org.martins.ShowHide" path="/org/martins/ShowHide/">
+	</schema>
+</schemalist>
