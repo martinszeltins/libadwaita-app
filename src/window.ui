@@ -3,7 +3,7 @@
     <requires lib="gtk" version="4.0"/>
     <requires lib="Adw" version="1.0"/>
 
-    <template class="ShowhideWindow" parent="AdwApplicationWindow">
+    <template class="MainWindow" parent="AdwApplicationWindow">
         <property name="default-width">600</property>
         <property name="default-height">300</property>
         
