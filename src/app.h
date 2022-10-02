@@ -8,6 +8,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (ShowhideApplication, showhide_application, SHOWHIDE, APPLICATION, AdwApplication)
 
-ShowhideApplication *showhide_application_new (const char * application_id, GApplicationFlags flags);
+ShowhideApplication *app_new (const char * application_id, GApplicationFlags flags);
 
 G_END_DECLS

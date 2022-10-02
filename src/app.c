@@ -9,7 +9,7 @@ struct _ShowhideApplication
 
 G_DEFINE_TYPE (ShowhideApplication, showhide_application, ADW_TYPE_APPLICATION)
 
-ShowhideApplication * showhide_application_new (const char *application_id, GApplicationFlags flags)
+ShowhideApplication * app_new (const char *application_id, GApplicationFlags flags)
 {
   g_return_val_if_fail (application_id != NULL, NULL);
 
