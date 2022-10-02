@@ -4,7 +4,7 @@
 
 G_BEGIN_DECLS
 
-#define SHOWHIDE_TYPE_APPLICATION (app_get_type())
+#define TYPE_APP (app_get_type())
 
 G_DECLARE_FINAL_TYPE (App, app, SHOWHIDE, APPLICATION, AdwApplication)
 

@@ -13,7 +13,7 @@ App * app_new (const char * id, GApplicationFlags flags)
 {
     g_return_val_if_fail (id != NULL, NULL);
 
-    return g_object_new (SHOWHIDE_TYPE_APPLICATION, "application-id", id, "flags", flags, NULL);
+    return g_object_new (TYPE_APP, "application-id", id, "flags", flags, NULL);
 }
 
 static void app_activate (GApplication * app)
@@ -23,7 +23,7 @@ static void app_activate (GApplication * app)
     window = gtk_application_get_active_window (GTK_APPLICATION (app));
 
     if (window == NULL) {
-        window = g_object_new (SHOWHIDE_TYPE_WINDOW, "application", app, NULL);
+        window = g_object_new (TYPE_WINDOW, "application", app, NULL);
     }
 
     gtk_window_present (window);
